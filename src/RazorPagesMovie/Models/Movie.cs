@@ -30,6 +30,6 @@ namespace RazorPagesMovie.Models
         [Required]
         public string Rating { get; set; } = string.Empty;
 
-        public virtual ICollection<Review> Reviews { get; set; } = default!;
+        public virtual ICollection<Review>? Reviews { get; set; } = default!;
     }
 }

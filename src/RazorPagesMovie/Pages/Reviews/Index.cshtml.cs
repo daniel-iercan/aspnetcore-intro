@@ -29,7 +29,7 @@ namespace RazorPagesMovie.Pages.Reviews
             }
 
             Movie = movie;
-            Review = movie.Reviews.ToList();
+            Review = movie.Reviews!.ToList();
             return Page();
         }
     }
