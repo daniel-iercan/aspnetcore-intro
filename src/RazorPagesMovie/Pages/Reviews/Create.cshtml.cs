@@ -38,19 +38,14 @@ namespace RazorPagesMovie.Pages.Reviews
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            var emptyReview = new Review();
-
-            if (await TryUpdateModelAsync<Review>(
-                emptyReview,
-                "review",   // Prefix for form value.
-                s => s.MovieId, s => s.Comment, s => s.Stars))
+            if (!ModelState.IsValid)
             {
-                _context.Reviews.Add(emptyReview);
-                await _context.SaveChangesAsync();
-                return RedirectToPage("./Index", new { movieId = emptyReview.MovieId });
+                return Page();
             }
 
-            return Page();
+            _context.Reviews.Add(Review);
+            await _context.SaveChangesAsync();
+            return RedirectToPage("./Index", new { movieId = Review.MovieId });
         }
     }
 }
