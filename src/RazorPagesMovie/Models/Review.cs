@@ -15,6 +15,6 @@ namespace RazorPagesMovie.Models
         [Range(1, 5)]
         public int Stars { get; set; }
 
-        public Movie Movie { get; set; } = default!;
+        public virtual Movie? Movie { get; set; }
     }
 }
