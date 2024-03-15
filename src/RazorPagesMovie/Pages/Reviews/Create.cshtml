@@ -1,0 +1,40 @@
+﻿@page
+@model RazorPagesMovie.Pages.Reviews.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Review</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-route-movieid="">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="Review.MovieId" type="hidden" value="@Model.Movie.Id" />
+            <div class="form-group">
+                <label asp-for="Review.Comment" class="control-label"></label>
+                <textarea asp-for="Review.Comment" class="form-control"></textarea>
+                <span asp-validation-for="Review.Comment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Review.Stars" class="control-label"></label>
+                <input asp-for="Review.Stars" class="form-control" />
+                <span asp-validation-for="Review.Stars" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index" asp-route-movieid="@Model.Movie.Id">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

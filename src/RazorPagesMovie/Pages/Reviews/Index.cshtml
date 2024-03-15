@@ -1,0 +1,43 @@
+﻿@page
+@model RazorPagesMovie.Pages.Reviews.IndexModel
+
+@{
+    ViewData["Title"] = $"{Model.Movie.Title}";
+}
+
+<h1>Reviews for @Model.Movie.Title</h1>
+
+<p>
+    <a asp-page="Create" asp-route-movieid="@Model.Movie.Id">Add a review</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Review[0].Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Review[0].Stars)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Review) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stars)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<a asp-page="../Movies/Index">Back to movies</a>
